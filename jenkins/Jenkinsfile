@@ -34,7 +34,8 @@ pipeline {
                         -Dsonar.projectKey=hello-world-maven \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://172.23.136.227:9000 \
-                        -Dsonar.login=b3bd94551937c4369c3cd522cfbf7d94129b31d1"""
+                        -Dsonar.login=b3bd94551937c4369c3cd522cfbf7d94129b31d1 \
+                        -Dsonar.java.binaries=**/target/classes"""
                     }
                 }
             }
