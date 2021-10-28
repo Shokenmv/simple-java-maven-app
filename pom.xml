@@ -29,7 +29,7 @@
         <plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
-          <version>4.6.2.2472</version>
+          <version>3.9.0.2155</version>
            <configuration>
             <sonar.sources>src/main/java</sonar.sources>
            </configuration>
