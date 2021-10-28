@@ -9,7 +9,6 @@ pipeline {
     tools {
         maven 'maven-latest'
         jdk 'jdk8'
-        sonar 'SonarQube Scanner'
     }
     stages {
         stage ('Initialize') {
@@ -23,8 +22,10 @@ pipeline {
         // SonarQube Scanner
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv(installationName: 'SonarQube') { 
-                    sh 'mvn sonar:sonar'
+                script {
+                    withSonarQubeEnv('SonarQube') { 
+                        sh 'mvn sonar:sonar'
+                    }
                 }
             }
         }
