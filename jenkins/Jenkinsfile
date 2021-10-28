@@ -23,6 +23,11 @@ pipeline {
                 ''' 
             }
         }
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
         // SonarQube Scanner
         stage('SonarQube analysis') {
             steps {
@@ -38,11 +43,6 @@ pipeline {
                         -Dsonar.java.binaries=**/target/classes"""
                     }
                 }
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
