@@ -22,8 +22,10 @@ pipeline {
         }
         // SonarQube Scanner
         stage('SonarQube analysis') {
-            withSonarQubeEnv(installationName: 'SonarQube') { 
-                sh 'mvn sonar:sonar'
+            steps {
+                withSonarQubeEnv(installationName: 'SonarQube') { 
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
         stage('Build') {
