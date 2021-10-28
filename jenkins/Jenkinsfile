@@ -6,6 +6,9 @@ pipeline {
 //             args '-v /root/.m2:/root/.m2'
 //         }
 //    }
+    environment {
+        def sonar-home = tool 'SonarQube Scanner'
+    }
     tools {
         maven 'maven-latest'
         jdk 'jdk8'
@@ -24,7 +27,11 @@ pipeline {
             steps {
                 script {
                     withSonarQubeEnv('SonarQube') { 
-                        sh 'mvn sonar:sonar'
+                        sh "${sonar-home}/bin/sonar-scanner \
+                        -Dsonar.projectKey=hello-world-maven \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://172.23.136.227:9000 \
+                        -Dsonar.login=b3bd94551937c4369c3cd522cfbf7d94129b31d1"
                     }
                 }
             }
