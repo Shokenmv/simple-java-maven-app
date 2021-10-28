@@ -9,6 +9,7 @@ pipeline {
     tools {
         maven 'maven-latest'
         jdk 'jdk8'
+        sonar 'SonarQube Scanner'
     }
     stages {
         stage ('Initialize') {
@@ -17,6 +18,12 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
+            }
+        }
+        // SonarQube Scanner
+        stage('SonarQube analysis') {
+            withSonarQubeEnv(installationName: 'SonarQube') { 
+                sh 'mvn sonar:sonar'
             }
         }
         stage('Build') {
