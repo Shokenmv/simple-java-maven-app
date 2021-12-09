@@ -42,6 +42,7 @@ pipeline {
                 }
             }
         }
+        // Tests
         stage('Test') {
             steps {
                 sh 'mvn test'
@@ -52,6 +53,7 @@ pipeline {
                 }
             }
         }
+        // Delivering
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
